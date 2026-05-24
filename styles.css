@@ -9,14 +9,14 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height:100vh;
+    min-height: 100vh;
     color: white;
 }
 
 .d1{
     width:90%;
     height:75%;
-    background:#1e293b;
+    
     padding:30px;
     border-radius:20px;
 }
@@ -65,8 +65,9 @@ select{
 }
 
 .typing-box{
-    background:#111827;
-    height:20%;
+    background:#334155;
+    height:60%;
+    margin-top: 1rem;
     padding:25px;
     border-radius:15px;
     font-size:32px;
@@ -123,13 +124,13 @@ select{
 #restart{
     width:100%;
     margin-top:25px;
-    padding:16px;
-    border:none;
+    padding:15px;
+    
     border-radius:12px;
     background:orange;
     color:white;
     font-size:20px;
     cursor:pointer;
-    transition:0.3s;
+    
 }
 

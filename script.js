@@ -1,4 +1,4 @@
-const text=["on a quiet, rainy afternoon, there is truly nothing better than curling up in a soft blanket with a warm cup of tea and a really good book. The gentle pitter-patter of raindrops against the windowpane creates a soothing rhythm that washes away the stresses of the outside world, inviting you to slow down and breathe. In these solitary moments of peace, the mind is free to wander through entirely new worlds, escaping the mundane and finding absolute comfort in the simple, quiet magic of the present"]
+const text="on a quiet rainy afternoon there is truly nothing better than curling up in a soft blanket with a warm cup of tea and a really good book the gentle pitter-patter of raindrops against the windowpane creates a soothing rhythm that washes away the stresses of the outside world inviting you to slow down and breathe in these solitary moments of peace the mind is free to wander through entirely new worlds escaping the mundane and finding absolute comfort in the simple quiet magic of the present"
 
 const typingBox = document.querySelector(".typing-box");
 const timeDisplay = document.querySelector(".stats div");
@@ -9,8 +9,8 @@ const personaDisplay = document.querySelector(".item4");
 const restartBtn = document.getElementById("restart");
 const timeSelect = document.querySelector("select");
 
-
-let maxTime = timeSelect.value;
+let timer;
+let maxTime =parseInt(timeSelect.value);
 let timeLeft = maxTime;
 let charIndex = 0;
 let mistakes = 0;
@@ -37,7 +37,7 @@ function loadParagraph(){
 
 function setTimer(){
 
-     let timer =setInterval(()=>{
+     timer =setInterval(()=>{
         if (timeLeft>0){
             timeLeft--;
             timeDisplay.innerHTML=`Time left:${timeLeft}s`;
@@ -54,7 +54,7 @@ function setTimer(){
 
 function typingText(e){
 
-    if(started){
+    if(!started){
         started=true;
         setTimer();
 
@@ -92,7 +92,6 @@ function results(){
 
     if(wpm<20) {
         persona="Tortoise"
-
     }
 
     else if(wpm<40){
@@ -107,7 +106,25 @@ function results(){
 }
 
 function restartTest(){
+
     clearInterval(timer);
+
+    maxTime = parseInt(timeSelect.value);
+    timeLeft = maxTime;
+
+    charIndex = 0;
+    mistakes = 0;
+    totalTyped = 0;
+    started = false;
+
+    timeDisplay.innerHTML = `Time left:${timeLeft}s`;
+
+    wpmDisplay.innerHTML = `<span class="s1">WPM:</span> 0`;
+    cpmDisplay.innerHTML = `<span class="s2">CPM:</span> 0`;
+    accuracyDisplay.innerHTML = `<span class="s3">Accuracy:</span> 0`;
+    personaDisplay.innerHTML = `<span class="s4">Your typing persona:</span> -`;
+    document.addEventListener("keydown", typingText);
+
     loadParagraph();
 }
 
@@ -116,4 +133,3 @@ timeSelect.addEventListener('change',restartTest);
 document.addEventListener('keydown',typingText);
 
 restartTest();
-loadParagraph();
