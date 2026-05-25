@@ -7,7 +7,7 @@ body{
     background:#0f172a;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+   
     align-items: center;
     min-height: 100vh;
     color: white;
@@ -30,8 +30,10 @@ body{
 
 .mobile-input{
     position:absolute;
-    opacity:0;
+    width:1px;
+    height:1px;
     pointer-events:none;
+    text-transform:none;
 }
 .set-time{
     display: flex;
@@ -78,6 +80,8 @@ select{
     padding:25px;
     border-radius:15px;
     font-size:32px;
+    max-height:300px;
+    line-height:1.8;
     
     color:#e2e8f0;
     margin-bottom:25px;

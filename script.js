@@ -76,6 +76,16 @@ function typingText(e){
     charIndex++;
     totalTyped++;
 
+    if(spans[charIndex]){
+    spans[charIndex].classList.add("current");
+
+    spans[charIndex].scrollIntoView({
+        behavior:"smooth",
+        block:"nearest",
+        inline:"nearest"
+    });
+}
+
      mobileInput.value = "";
 
     results();
