@@ -9,6 +9,8 @@ const personaDisplay = document.querySelector(".item4");
 const restartBtn = document.getElementById("restart");
 const timeSelect = document.querySelector("select");
 
+const mobileInput=document.querySelector(".mobile-input")
+
 let timer;
 let maxTime =parseInt(timeSelect.value);
 let timeLeft = maxTime;
@@ -46,14 +48,15 @@ function setTimer(){
 
         else{
             clearInterval(timer);                                       
-            document.removeEventListener("keydown",typingText);
+            mobileInput.disabled=true;
             
         }
     }, 1000)
 }
 
 function typingText(e){
-
+    
+     const typedChar = e.target.value.slice(-1);
     if(!started){
         started=true;
         setTimer();
@@ -62,7 +65,7 @@ function typingText(e){
     const spans= typingBox.querySelectorAll('span');
     const chi=spans[charIndex];
 
-    if(e.key===chi.innerText){
+    if(typedChar===chi.innerText){
         chi.classList.add('correct');
     }
     else{
@@ -72,6 +75,8 @@ function typingText(e){
 
     charIndex++;
     totalTyped++;
+
+     mobileInput.value = "";
 
     results();
 }
@@ -123,13 +128,17 @@ function restartTest(){
     cpmDisplay.innerHTML = `<span class="s2">CPM:</span> 0`;
     accuracyDisplay.innerHTML = `<span class="s3">Accuracy:</span> 0`;
     personaDisplay.innerHTML = `<span class="s4">Your typing persona:</span> -`;
-    document.addEventListener("keydown", typingText);
-
+    mobileInput.addEventListener("input", typingText);
+     mobileInput.focus();
     loadParagraph();
 }
 
 restartBtn.addEventListener('click',restartTest);
 timeSelect.addEventListener('change',restartTest);
-document.addEventListener('keydown',typingText);
+typingBox.addEventListener("click", ()=>{
+
+    mobileInput.focus();
+});
+mobileInput.addEventListener("input", typingText);
 
 restartTest();

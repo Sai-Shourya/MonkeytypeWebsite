@@ -28,6 +28,11 @@ body{
     margin-bottom: 1rem;
 }
 
+.mobile-input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
 .set-time{
     display: flex;
     justify-content: start;
@@ -64,18 +69,25 @@ select{
     font-weight:bold;
 }
 
+
+
 .typing-box{
     background:#334155;
-    height:60%;
-    margin-top: 1rem;
+    min-height:220px;
+    margin-top:1rem;
     padding:25px;
     border-radius:15px;
     font-size:32px;
-    line-height:2;
+    
     color:#e2e8f0;
     margin-bottom:25px;
     user-select:none;
+
     word-wrap:break-word;
+    overflow-wrap:break-word;
+   
+
+    overflow-y:auto;
 }
 
 .correct{
