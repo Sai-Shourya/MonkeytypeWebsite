@@ -132,13 +132,15 @@ function restartTest(){
     totalTyped = 0;
     started = false;
 
+    mobileInput.disabled = false;
+
     timeDisplay.innerHTML = `Time left:${timeLeft}s`;
 
     wpmDisplay.innerHTML = `<span class="s1">WPM:</span> 0`;
     cpmDisplay.innerHTML = `<span class="s2">CPM:</span> 0`;
     accuracyDisplay.innerHTML = `<span class="s3">Accuracy:</span> 0`;
     personaDisplay.innerHTML = `<span class="s4">Your typing persona:</span> -`;
-    mobileInput.addEventListener("input", typingText);
+   
      mobileInput.focus();
     loadParagraph();
 }
